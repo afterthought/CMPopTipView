@@ -208,29 +208,29 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // iPad
         if (maxWidth) {
-            if (maxWidth < containerView.frame.size.width) {
+            if (maxWidth < containerView.bounds.size.width) {
                 rectWidth = maxWidth;
             }
             else {
-                rectWidth = containerView.frame.size.width - 20;
+                rectWidth = containerView.bounds.size.width - 20;
             }
         }
         else {
-            rectWidth = (int)(containerView.frame.size.width/3);
+            rectWidth = (int)(containerView.bounds.size.width/3);
         }
     }
     else {
         // iPhone
         if (maxWidth) {
-            if (maxWidth < containerView.frame.size.width) {
+            if (maxWidth < containerView.bounds.size.width) {
                 rectWidth = maxWidth;
             }
             else {
-                rectWidth = containerView.frame.size.width - 10;
+                rectWidth = containerView.bounds.size.width - 10;
             }
         }
         else {
-            rectWidth = (int)(containerView.frame.size.width*2/3);
+            rectWidth = (int)(containerView.bounds.size.width*2/3);
         }
     }
 
@@ -265,7 +265,7 @@
 		}
 	}
 	
-	CGFloat W = containerView.frame.size.width;
+	CGFloat W = containerView.bounds.size.width;
 	
 	CGFloat x_p = targetView.center.x;
 	CGFloat x_b = x_p - roundf(bubbleSize.width/2);
