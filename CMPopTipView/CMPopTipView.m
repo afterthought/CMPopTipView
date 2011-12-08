@@ -388,9 +388,8 @@
 		[self finaliseDismiss];
 	}
 }
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { 
-	highlight = YES;
+-(void)didTap:(UIGestureRecognizer *)recognizer {
+    highlight = YES;
 	[self setNeedsDisplay];
 	
 	[self dismissAnimated:YES];
@@ -399,6 +398,7 @@
 		[delegate popTipViewWasDismissedByUser:self];
 	}
 }
+
 
 - (void)popAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     // at the end set to normal size
@@ -422,6 +422,9 @@
 		self.textColor = [UIColor whiteColor];
 		self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:60.0/255.0 blue:154.0/255.0 alpha:1.0];
         self.animation = CMPopTipAnimationSlide;
+        
+        UITapGestureRecognizer *tapRecognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)] autorelease];
+        [self addGestureRecognizer:tapRecognizer];
     }
     return self;
 }
