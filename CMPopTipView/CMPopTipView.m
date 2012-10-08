@@ -26,7 +26,7 @@
 #import "CMPopTipView.h"
 
 @interface CMPopTipView ()
-@property (nonatomic, retain, readwrite)	id	targetObject;
+@property (nonatomic, strong, readwrite)	id	targetObject;
 @end
 
 
@@ -423,7 +423,7 @@
 		self.backgroundColor = [UIColor colorWithRed:62.0/255.0 green:60.0/255.0 blue:154.0/255.0 alpha:1.0];
         self.animation = CMPopTipAnimationSlide;
         
-        UITapGestureRecognizer *tapRecognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)] autorelease];
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
         [self addGestureRecognizer:tapRecognizer];
     }
     return self;
@@ -438,15 +438,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[backgroundColor release];
-	[message release];
-	[targetObject release];
-	[textColor release];
-	[textFont release];
-	
-    [super dealloc];
-}
 
 
 @end

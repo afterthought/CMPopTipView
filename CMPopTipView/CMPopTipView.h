@@ -99,7 +99,7 @@ typedef enum {
 
 @interface CMPopTipView : UIView {
 	UIColor					*backgroundColor;
-	id<CMPopTipViewDelegate>	delegate;
+	id<CMPopTipViewDelegate>	__weak delegate;
 	NSString				*message;
 	id						targetObject;
 	UIColor					*textColor;
@@ -117,12 +117,12 @@ typedef enum {
 	CGPoint					targetPoint;
 }
 
-@property (nonatomic, retain)			UIColor					*backgroundColor;
-@property (nonatomic, assign)		id<CMPopTipViewDelegate>	delegate;
-@property (nonatomic, retain)			NSString				*message;
-@property (nonatomic, retain, readonly)	id						targetObject;
-@property (nonatomic, retain)			UIColor					*textColor;
-@property (nonatomic, retain)			UIFont					*textFont;
+@property (nonatomic, strong)			UIColor					*backgroundColor;
+@property (nonatomic, weak)		id<CMPopTipViewDelegate>	delegate;
+@property (nonatomic, strong)			NSString				*message;
+@property (nonatomic, strong, readonly)	id						targetObject;
+@property (nonatomic, strong)			UIColor					*textColor;
+@property (nonatomic, strong)			UIFont					*textFont;
 @property (nonatomic, assign)           CMPopTipAnimation       animation;
 @property (nonatomic, assign)           CGFloat                 maxWidth;
 
